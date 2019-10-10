@@ -1,0 +1,9 @@
+'''
+可以直接将list赋值给set
+'''
+list1=[1,2,3]
+list2=[3,4,5]
+list1.extend(list2)
+s=set(list1)
+print(list1)
+print(s)
