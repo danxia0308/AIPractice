@@ -62,4 +62,11 @@ def reverse():
     random.shuffle(b)
     print(b)
 
-reverse()
+def test_select():
+    a=None
+    if a != None:
+        print('a is not None')
+    else:
+        print('A is none')
+
+test_select()

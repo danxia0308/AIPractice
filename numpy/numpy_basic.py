@@ -4,8 +4,8 @@ size/ndim/shape/dtype
 '''
 import numpy as np
 import os
-import imageio
-import matplotlib.pyplot as plt
+# import imageio
+# import matplotlib.pyplot as plt
 
 '''
 logical_and
@@ -17,7 +17,7 @@ flip
 def sum():
     print(np.sum((1,2)))
     print(np.mean([1,2,3,0]))
-sum()
+# sum()
 
 def logical():
     a=np.array([1,2,5,6])
@@ -146,6 +146,15 @@ def test():
         break;
 # test()
 
+def broadcast():
+    x=np.array([[1,0],[3,0]])
+    y=np.ones((2,2,2))
+    z=np.broadcast_to(x,y.shape)
+    print(x)
+    print(y)
+    print(z)
+
+broadcast()
 # c = (np.random.random((1, 3))*0.6+0.4).tolist()[0]
 # print(np.random.random((1, 3)))
 # print(np.random.random((1, 3))*0.6+0.4)

@@ -1,4 +1,5 @@
 import numpy as np
+import os
 
 '''
 默认dtype为np.float64
@@ -19,7 +20,7 @@ def dtype_basic():
     print('Change to float, then size not changed:\n{}'.format(a))
     #正确的转换dtype的方法是使用astype。
     print(a.astype(np.float32))
-dtype_basic()
+# dtype_basic()
 '''
 python字典存为npy文件后，load出来还是numpy.ndarray类型的，需要调用item()来获得字典结构。
 '''
@@ -32,15 +33,22 @@ def npy():
     print(type(x),type(x.item()))
     print(x.item()['0'])
     
-    
-    
 def array():
     a=[]
     a.append(['keys1','sophie'])
     a.append(['key2','kate'])
     print(a)
 
+def npy1():
+    a=[1,2,3]
+    b=[4,5,6]
+#     if os.path.exists('data1.npz'):
+#         print('data.npz exist.')
+    np.savez('data',a=a,b=b)
+    data=np.load('data.npz')
+    print(data['a'],data['b'])
 
+npy1()
     
 
 # d={}

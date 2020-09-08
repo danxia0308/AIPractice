@@ -1,0 +1,15 @@
+import tensorflow as tf
+ 
+a = tf.Variable([[1,2,3,4,5], [6,7,8,9,10], [11,12,13,14,15]])
+index_a = tf.Variable([0,2])
+b = tf.Variable([1,2,3,4,5,6,7,8,9,10])
+index_b = tf.Variable([2,4,6,8])
+ 
+with tf.Session() as sess:
+    sess.run(tf.global_variables_initializer())
+    print(sess.run(tf.gather(a, index_a)))
+    print(sess.run(tf.gather(b, index_b)))
+    a1 = tf.gather(a, index_a, axis=0)
+    a2 = tf.gather(a1, index_a, axis=1)
+    print(sess.run(a1))
+    print(sess.run(a2))

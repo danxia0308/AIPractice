@@ -14,6 +14,24 @@ import tensorflow as tf
 import numpy as np
 from tensorflow.python.framework.errors_impl import OutOfRangeError
 
+
+
+# 新版不能使用make_one_shot_iterator和make_initializable_iterator
+# 2.X版本和3.X版本很不同啊
+def ds_from_tensors():
+    dataset = tf.data.Dataset.from_tensor_slices(np.array([1.0,2.0,3.0,4.0,5.0,6.0]))
+#     dataset = tf.data.Dataset.from_tensor_slices(np.array(tf.constant(1.0, shape=[80])))
+    dataset = dataset.batch(3)
+    dataset = dataset.map(lambda x:[x,x])
+    print(list(dataset.as_numpy_iterator()))
+    
+    for element in dataset.as_numpy_iterator():
+        print(element)
+#     with tf.compat.v1.Session() as sess:
+#         print(sess.run(next))
+
+ds_from_tensors()
+
 '''
 tf.data.Dataset.from_tensor_slices    输入一个或多个tensor，可为数组或者dict。第一维表示数目，需要保持一致。
 tf.data.make_one_shot_iterator        产生一次输出。
@@ -59,7 +77,7 @@ def gen_data_and_use():
                 break
     
     
-gen_data_and_use()
+# gen_data_and_use()
 
 #TODO What's parse_single_example?
 def __parse_function(example_proto):
@@ -93,6 +111,6 @@ class Agent():
             sess.run(iterator.initializer)
             for i in range(2):
                 print(sess.run(next_element))
-agent=Agent()
+# agent=Agent()
 # agent.run()
     
